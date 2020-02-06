@@ -1,7 +1,8 @@
 from django.urls import path
 
 from . import views
+from .dependency_config import container
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', container.partial(views.index), name='index'),
 ]
