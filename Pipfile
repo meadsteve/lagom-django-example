@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "~=3.0"
-lagom = "~=0.6.4"
+lagom = "~=0.8.0"
 
 [requires]
 python_version = "3.7"
