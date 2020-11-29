@@ -11,20 +11,20 @@ class SomeDep:
     message = "Hello, world. I'm an injected dependency"
 
 
-@deps.bind_view
+@deps.magic_bind_view
 def index(request, dep: SomeDep, questions: DjangoModel[Question]):
     new_question = questions.new(question_text="What's next?", pub_date=timezone.now())
     new_question.save()
     return HttpResponse(f"plain old function: {dep.message} with {questions.objects.all().count()} questions")
 
 
-@deps.bind_view
+@deps.magic_bind_view
 class CBVexample(View):
     def get(self, request, dep: SomeDep):
         return HttpResponse(f"Class based: {dep.message}")
 
 
-@deps.bind_view
+@deps.magic_bind_view
 class CBVexampleWithPathParams(View):
     def get(self, request, favourite_number, dep: SomeDep):
         return HttpResponse(f"Class based with my favourite number: {favourite_number} but also: {dep.message}")
