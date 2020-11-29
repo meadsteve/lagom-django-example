@@ -1,7 +1,8 @@
-
-
-from lagom.experimental.integrations.django import DjangoContainer
+from lagom import Container
+from lagom.experimental.integrations.django import DjangoIntegration
 
 from .models import Question
 
-container = DjangoContainer(models=[Question])
+container = Container()
+deps = DjangoIntegration(container, models=[Question])
+
